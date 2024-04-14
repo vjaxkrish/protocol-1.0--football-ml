@@ -1,0 +1,2 @@
+#YOLO v8 model training code 
+!yolo task=detect mode=train \model=yolov8n.pt \data={dataset.location}/data.yaml \epochs=50 \imgsz=640

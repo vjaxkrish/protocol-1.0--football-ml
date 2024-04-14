@@ -1,0 +1,18 @@
+# importing the test set 
+pip install SoccerNet --upgrade
+
+import SoccerNet
+from SoccerNet.Downloader import SoccerNetDownloader
+mySoccerNetDownloader=SoccerNetDownloader(LocalDirectory="path/to/SoccerNet")
+
+mySoccerNetDownloader.downloadGames(files=["1_ResNET_TF2_PCA512.npy", "2_ResNET_TF2_PCA512.npy"], split=["train","valid","test","challenge"])
+mySoccerNetDownloader.downloadGames(files=["1_baidu_soccer_embeddings.npy", "2_baidu_soccer_embeddings.npy"], split=["train","valid","test","challenge"])
+
+# importing the train set 
+!pip install roboflow
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="MLrT79sAD6m0a7G37050")
+project = rf.workspace("nikhil-chapre-xgndf").project("detect-players-dgxz0")
+version = project.version(7)
+dataset = version.download("yolov8")
